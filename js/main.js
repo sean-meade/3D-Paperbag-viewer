@@ -36,8 +36,6 @@ function init() {
   const texture = new THREE.TextureLoader().load('textures/paperbag.png');
   const material = new THREE.MeshBasicMaterial( { map: texture });
 
-  
-
   // Create object cube (mesh)
   cube = new THREE.Mesh(geometry, material);
 
@@ -49,7 +47,7 @@ function init() {
   const decalMaterial = new THREE.MeshBasicMaterial( { map: texture2 });
 
   // Create input for DecalGeometry
-  const position = new THREE.Vector3( 0, 0, 0 );
+  const position = new THREE.Vector3( 0, 0, 0);
   const orientation = new THREE.Euler( 0, 0, 0, 'XYZ' );
   const size = new THREE.Vector3( 0.5, 0.5, 0.5);
 
@@ -70,10 +68,12 @@ function init() {
   var gui = new dat.GUI();
 
   var box = gui.addFolder('Bag Demensions');
-  box.add(cube.scale, 'x', 0, 3).name('Width').listen();
-  box.add(cube.scale, 'y', 0, 3).name('Height').listen();
-  box.add(cube.scale, 'z', 0, 3).name('Length').listen();
+  box.add(cube.scale, 'x', 1, 3).name('Width').listen();
+  box.add(cube.scale, 'y', 1, 3).name('Height').listen();
+  box.add(cube.scale, 'z', 1, 3).name('Length').listen();
   box.open();
+
+  console.log(box)
 
 }
 
