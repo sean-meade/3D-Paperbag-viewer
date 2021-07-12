@@ -44,12 +44,62 @@ function init() {
 
 }
 
+let isRotating = false;
+let mouseX = 0;
+let mouseY = 0;
+let targetX = 0;
+let targetY = 0;
+// use the center of the screen coords
+const windowX = window.innerWidth / 2;
+const windowY = window.innerHeight / 2;
+
+const grabObject = window;
+
+// event.offsetX, event.offsetY gives the (x,y) offset from the edge of the canvas.
+
+// Add the event listeners for mousedown, mousemove, and mouseup
+grabObject.addEventListener('mousedown', e => {
+  mouseX = (e.clientY - windowX);
+  mouseY = (e.clientX - windowY);
+  isRotating = true;
+});
+
+grabObject.addEventListener('mousemove', e => {
+  if (isRotating === true) {
+    rotate(mouseX, mouseY);
+    mouseX = (e.clientY - windowX);
+    mouseY = (e.clientX - windowY);
+  }
+});
+
+window.addEventListener('mouseup', e => {
+  if (isRotating === true) {
+    rotate(mouseX, mouseY);
+    mouseX = 0;
+    mouseY = 0;
+    isRotating = false;
+  }
+});
+
+function rotate(mouseX, mouseY) {
+
+  targetX = mouseX * .01;
+  targetY = mouseY * .01;
+
+  cube.rotation.x += 0.05 * (targetX - cube.rotation.x);
+  cube.rotation.y -= 0.05 * (targetY + cube.rotation.y);
+}
+
+
+
 // Create loop to display object
 function animate() {
   requestAnimationFrame(animate);
 
   // rotate object
-  cube.rotation.y += 0.01;
+  // cube.rotation.y += 0.01;
+
+
 
   // render it all together
   renderer.render(scene, camera);
