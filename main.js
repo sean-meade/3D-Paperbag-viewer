@@ -29,7 +29,9 @@ function init() {
   const geometry = new THREE.BoxGeometry(1, 1.2, 0.5);
 
   // Create Material 
-  const material = new THREE.MeshBasicMaterial( {color: 0xc19a6c});
+  // const material = new THREE.MeshBasicMaterial( {color: 0xc19a6c});
+  const texture = new THREE.TextureLoader().load('textures/paperbag.png');
+  const material = new THREE.MeshBasicMaterial( { map: texture });
 
   // Create object cube (mesh)
   cube = new THREE.Mesh(geometry, material);
