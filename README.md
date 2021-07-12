@@ -13,3 +13,6 @@ Current objectives:
 - Make image move with length change.
 - Make image resize with width and height change.
 - Add feature to add any image as logo.
+
+
+Hosted on GitHub pages (Please not the logo isn't dynamic and allow time for it to render): https://sean-meade.github.io/pp-pre-skills-3d-paperbag/
