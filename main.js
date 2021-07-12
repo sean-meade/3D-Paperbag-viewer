@@ -66,7 +66,7 @@ function init() {
   // Add controls to rotate and zoom
   controls = new OrbitControls(camera, renderer.domElement)
 
-  // Add controls for 
+  // Add controls for resizing bag
   var gui = new dat.GUI();
 
   var box = gui.addFolder('Bag Demensions');
