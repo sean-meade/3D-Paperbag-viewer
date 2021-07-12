@@ -1,5 +1,4 @@
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
-// import { DecalGeometry } from "https://threejs.org/examples/jsm/geometries/DecalGeometry.js";
 
 let scene, camera, renderer, cube, controls;
 
@@ -29,7 +28,7 @@ function init() {
   document.body.appendChild(renderer.domElement)
 
   // Create Geometry of box
-  const geometry = new THREE.BoxGeometry(1, 1.2, 0.5);
+  const geometry = new THREE.BoxGeometry(1, 1.2, 0.5, 80, 80, 80);
 
 
   // Create Material 
@@ -45,25 +44,32 @@ function init() {
   // add object to scene
   scene.add(cube);
 
+  // Create material from logo
   const texture2 = new THREE.TextureLoader().load('logo/precious-packaging-logo.png');
   const decalMaterial = new THREE.MeshBasicMaterial( { map: texture2 });
-  const position = new THREE.Vector3( 0, 0, 0.2 );
+
+  // Create input for DecalGeometry
+  const position = new THREE.Vector3( 0, 0, 0 );
   const orientation = new THREE.Euler( 0, 0, 0, 'XYZ' );
   const size = new THREE.Vector3( 0.5, 0.5, 0.5);
 
+  // Create DecalGeometry
   var decalGeometry = new THREE.DecalGeometry( cube, position, orientation, size );
-						
+
+  // add DecalGeometry and material to scene
   var decal = new THREE.Mesh( decalGeometry, decalMaterial );
   scene.add( decal );
 
   // reposition the camera
   camera.position.z = 5;
 
+  // Add controls to rotate and zoom
   controls = new OrbitControls(camera, renderer.domElement)
 
+  // Add controls for 
   var gui = new dat.GUI();
 
-  var box = gui.addFolder('Cube');
+  var box = gui.addFolder('Bag Demensions');
   box.add(cube.scale, 'x', 0, 3).name('Width').listen();
   box.add(cube.scale, 'y', 0, 3).name('Height').listen();
   box.add(cube.scale, 'z', 0, 3).name('Length').listen();
@@ -71,62 +77,9 @@ function init() {
 
 }
 
-// let isRotating = false;
-// let mouseX = 0;
-// let mouseY = 0;
-// let targetX = 0;
-// let targetY = 0;
-// // use the center of the screen coords
-// const windowX = window.innerWidth / 2;
-// const windowY = window.innerHeight / 2;
-
-// const grabObject = window;
-
-// // event.offsetX, event.offsetY gives the (x,y) offset from the edge of the canvas.
-
-// // Add the event listeners for mousedown, mousemove, and mouseup
-// grabObject.addEventListener('mousedown', e => {
-//   mouseX = (e.clientY - windowX);
-//   mouseY = (e.clientX - windowY);
-//   isRotating = true;
-// });
-
-// grabObject.addEventListener('mousemove', e => {
-//   if (isRotating === true) {
-//     rotate(mouseX, mouseY);
-//     mouseX = (e.clientY - windowX);
-//     mouseY = (e.clientX - windowY);
-//   }
-// });
-
-// window.addEventListener('mouseup', e => {
-//   if (isRotating === true) {
-//     rotate(mouseX, mouseY);
-//     mouseX = 0;
-//     mouseY = 0;
-//     isRotating = false;
-//   }
-// });
-
-// function rotate(mouseX, mouseY) {
-
-//   targetX = mouseX * .01;
-//   targetY = mouseY * .01;
-
-//   cube.rotation.x += 0.05 * (targetX - cube.rotation.x);
-//   cube.rotation.y -= 0.05 * (targetY + cube.rotation.y);
-// }
-
-
-
 // Create loop to display object
 function animate() {
   requestAnimationFrame(animate);
-
-  // rotate object
-  // cube.rotation.y += 0.01;
-
-
 
   // render it all together
   renderer.render(scene, camera);
