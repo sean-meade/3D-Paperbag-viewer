@@ -1,0 +1,27 @@
+{
+  "name": "precious-packaging",
+  "version": "1.0.0",
+  "description": "model to view and change paper bag",
+  "main": "index.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sean-meade/pp-pre-skills-3d-paperbag.git"
+  },
+  "keywords": [
+    "three.js",
+    "3D"
+  ],
+  "author": "Sean Meade",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sean-meade/pp-pre-skills-3d-paperbag/issues"
+  },
+  "homepage": "https://github.com/sean-meade/pp-pre-skills-3d-paperbag#readme",
+  "dependencies": {
+    "dat.gui": "^0.7.7",
+    "three": "^0.130.1"
+  }
+}
