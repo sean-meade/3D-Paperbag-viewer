@@ -8,3 +8,8 @@ You are required to create a three.js web application that includes the followin
 - Provide controls to resize the model (width, height, depth)
 - Place a decal texture of precious packaging’s logo on the front of the bag
 - Add other features to the interactive web app to showcase your skills with three.js
+
+Current objectives:
+- Make image move with length change.
+- Make image resize with width and height change.
+- Add feature to add any image as logo.
