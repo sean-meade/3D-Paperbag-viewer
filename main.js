@@ -1,4 +1,5 @@
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js';
+// import { DecalGeometry } from "https://threejs.org/examples/jsm/geometries/DecalGeometry.js";
 
 let scene, camera, renderer, cube, controls;
 
@@ -36,11 +37,24 @@ function init() {
   const texture = new THREE.TextureLoader().load('textures/paperbag.png');
   const material = new THREE.MeshBasicMaterial( { map: texture });
 
+  
+
   // Create object cube (mesh)
   cube = new THREE.Mesh(geometry, material);
 
   // add object to scene
   scene.add(cube);
+
+  const texture2 = new THREE.TextureLoader().load('logo/precious-packaging-logo.png');
+  const decalMaterial = new THREE.MeshBasicMaterial( { map: texture2 });
+  const position = new THREE.Vector3( 0, 0, 0.2 );
+  const orientation = new THREE.Euler( 0, 0, 0, 'XYZ' );
+  const size = new THREE.Vector3( 0.5, 0.5, 0.5);
+
+  var decalGeometry = new THREE.DecalGeometry( cube, position, orientation, size );
+						
+  var decal = new THREE.Mesh( decalGeometry, decalMaterial );
+  scene.add( decal );
 
   // reposition the camera
   camera.position.z = 5;
@@ -53,7 +67,6 @@ function init() {
   box.add(cube.scale, 'x', 0, 3).name('Width').listen();
   box.add(cube.scale, 'y', 0, 3).name('Height').listen();
   box.add(cube.scale, 'z', 0, 3).name('Length').listen();
-  box.add(cube.material, 'wireframe').listen();
   box.open();
 
 }
