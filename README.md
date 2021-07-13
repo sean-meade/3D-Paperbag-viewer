@@ -1,6 +1,7 @@
 # Pre-Interview Skills Assessment for Precious Packaging
 
-Objective
+## Objective
+
 You are required to create a three.js web application that includes the following:
 - Display a paper bag 3D Model (you may wish to model your own or use a 3rd party asset)
 - Use the mouse/touch control to orbit the paper bag
