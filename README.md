@@ -16,4 +16,4 @@ Current objectives:
 - Add feature to add any image as logo.
 
 
-Hosted on GitHub pages (Please note the logo isn't dynamic and allow time for it to render): https://sean-meade.github.io/pp-pre-skills-3d-paperbag/
+Hosted on GitHub pages (Please note the logo isn't dynamic and allow time for it to render): https://sean-meade.github.io/3D-Paperbag-viewer/
